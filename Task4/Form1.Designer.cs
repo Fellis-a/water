@@ -33,6 +33,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tbDirection = new System.Windows.Forms.TrackBar();
             this.tbSpread = new System.Windows.Forms.TrackBar();
+            this.btnFromColor = new System.Windows.Forms.Button();
+            this.btnToColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpread)).BeginInit();
@@ -40,9 +42,9 @@
             // 
             // picDisplay
             // 
-            this.picDisplay.Location = new System.Drawing.Point(148, 154);
+            this.picDisplay.Location = new System.Drawing.Point(40, 33);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(88, 169);
+            this.picDisplay.Size = new System.Drawing.Size(253, 222);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             this.picDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PicDisplay_MouseMove);
@@ -73,12 +75,34 @@
             this.tbSpread.TickFrequency = 10;
             this.tbSpread.Scroll += new System.EventHandler(this.TbSpead_Scroll);
             // 
+            // btnFromColor
+            // 
+            this.btnFromColor.Location = new System.Drawing.Point(364, 231);
+            this.btnFromColor.Name = "btnFromColor";
+            this.btnFromColor.Size = new System.Drawing.Size(75, 23);
+            this.btnFromColor.TabIndex = 3;
+            this.btnFromColor.Text = "From color";
+            this.btnFromColor.UseVisualStyleBackColor = true;
+            this.btnFromColor.Click += new System.EventHandler(this.BtnFromColor_Click);
+            // 
+            // btnToColor
+            // 
+            this.btnToColor.Location = new System.Drawing.Point(364, 271);
+            this.btnToColor.Name = "btnToColor";
+            this.btnToColor.Size = new System.Drawing.Size(75, 23);
+            this.btnToColor.TabIndex = 4;
+            this.btnToColor.Text = "To color";
+            this.btnToColor.UseVisualStyleBackColor = true;
+            this.btnToColor.Click += new System.EventHandler(this.BtnToColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Task4.Properties.Resources.water;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnToColor);
+            this.Controls.Add(this.btnFromColor);
             this.Controls.Add(this.tbSpread);
             this.Controls.Add(this.tbDirection);
             this.Controls.Add(this.picDisplay);
@@ -99,6 +123,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar tbDirection;
         private System.Windows.Forms.TrackBar tbSpread;
+        private System.Windows.Forms.Button btnFromColor;
+        private System.Windows.Forms.Button btnToColor;
     }
 }
 

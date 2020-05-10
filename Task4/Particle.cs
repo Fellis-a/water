@@ -80,6 +80,8 @@ namespace Task4
         {
             var particle = ParticleImage.Generate();
             particle.image = Properties.Resources.drop;
+            particle.FromColor = Color.LightBlue;
+            particle.ToColor = Color.White;
 
 
             particle.X = 0 ;
@@ -114,14 +116,19 @@ namespace Task4
         public int Spread = 20; 
         public int Direction = -90 + 15 - Particle.rand.Next(30); 
         public int Life = 20;
+        public Color FromColor = Color.LightBlue; // исходный цвет
+        public Color ToColor = Color.White; // конечный цвет
 
         public override Particle CreateParticle()
         {
             var particle = ParticleImage.Generate();
              particle.image = Properties.Resources.drop;
+            particle.FromColor = this.FromColor;
+            particle.ToColor = Color.FromArgb(0, this.ToColor);
+
 
             particle.Life = this.Life +  20 + Particle.rand.Next(100); ;
-            particle.Direction = this.Direction + Particle.rand.Next(-Spread / 2, Spread / 2);
+            particle.Direction = this.Direction + Particle.rand.Next(-Spread / 3, Spread / 3);
 
             particle.X = Position.X;
             particle.Y = Position.Y;
@@ -172,36 +179,78 @@ namespace Task4
         }
         
     }
-   
-    public class ParticleImage : Particle
+    public class ParticleColorful : Particle
     {
-        public Image image;
-      
-        public new static ParticleImage Generate()
+        // два новых поля под цвет начальный и конечный
+        public Color FromColor;
+        public Color ToColor;
+
+        // для смеси цветов
+        public static Color MixColor(Color color1, Color color2, float k)
         {
-            return new ParticleImage
+            return Color.FromArgb(
+                (int)(color2.A * k + color1.A * (1 - k)),
+                (int)(color2.R * k + color1.R * (1 - k)),
+                (int)(color2.G * k + color1.G * (1 - k)),
+                (int)(color2.B * k + color1.B * (1 - k))
+            );
+        }
+
+        // подменяем метод генерации на новый, который будет возвращать ParticleColorful
+        public new static ParticleColorful Generate()
+        {
+            return new ParticleColorful
             {
                 Direction = rand.Next(360),
                 Speed = 1 + rand.Next(10),
-                Radius = 1 + rand.Next(5),
-                Life = 500 + rand.Next(500),
+                Radius = 2 + rand.Next(10),
+                Life = 20 + rand.Next(100),
             };
         }
+    }
+        public class ParticleImage : Particle
+        {
+            public Image image;
+            public Color FromColor;
+            public Color ToColor;
 
+
+            public new static ParticleImage Generate()
+            {
+                return new ParticleImage
+                {
+                    Direction = rand.Next(360),
+                    Speed = 1 + rand.Next(10),
+                    Radius = 1 + rand.Next(5),
+                    Life = 500 + rand.Next(500),
+                };
+            }
+        
         public override void Draw(Graphics g)
         {
             float k = Math.Min(1f, Life / 100);
 
-            
-        
-       
+                var color = ParticleColorful.MixColor(ToColor, FromColor, k);
+                ColorMatrix matrix = new ColorMatrix(new float[][]{
+            new float[] {0, 0, 0, 0, 0}, // умножаем текущий красный цвет на 0
+            new float[] {0, 0, 0, 0, 0}, // умножаем текущий зеленый цвет на 0
+            new float[] {0, 0, 0, 0, 0}, // умножаем текущий синий цвет на 0
+            new float[] {0, 0, 0, k, 0}, // тут подставляем k который прозрачность задает
+            new float[] {(float)color.R / 255, (float)color.G / 255, (float)color.B/255, 0, 1F}}); // а сюда пихаем рассчитанный цвет переведенный из шкалы от 0 до 255 в шкалу от 0 до 1
 
-            g.DrawImage(image,
+                // эту матрицу пихают в атрибуты
+                ImageAttributes imageAttributes = new ImageAttributes();
+                imageAttributes.SetColorMatrix(matrix);
+
+
+
+                g.DrawImage(image,
         
                 new Rectangle((int)(X - Radius), (int)(Y - Radius), Radius * 2, Radius * 2),
           
                 0, 0, image.Width, image.Height,
-                GraphicsUnit.Pixel
+                GraphicsUnit.Pixel,
+                 imageAttributes
                );
         }
     }

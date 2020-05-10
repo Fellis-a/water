@@ -16,13 +16,14 @@ namespace Task4
         public Form1()
         {
             InitializeComponent();
-            picDisplay.Image = Properties.Resources.water;
-            picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+            //picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+            //picDisplay.Image = new Bitmap(200, 300);
+            picDisplay.Image = new Bitmap(Properties.Resources.water);
             emiter = new DirectionColorfulEmiter
             {
                 ParticlesCount = 0,
               
-                Position = new Point(picDisplay.Width / 2, picDisplay.Height /12)
+                Position = new Point(picDisplay.Width / 2, picDisplay.Height /2)
             };
         }
 
@@ -47,7 +48,7 @@ namespace Task4
             UpdateState();
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
-                g.Clear(Color.White);
+                g.DrawImage(Properties.Resources.water, picDisplay.Right,picDisplay.Top);
                 Render(g);
             }
             picDisplay.Invalidate();
@@ -70,6 +71,24 @@ namespace Task4
             emiter.Spread = tbSpread.Value;
         }
 
-       
+        private void BtnFromColor_Click(object sender, EventArgs e)
+        {
+            var dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                emiter.FromColor = dialog.Color;
+                btnFromColor.BackColor = dialog.Color;
+            }
+        }
+
+        private void BtnToColor_Click(object sender, EventArgs e)
+        {
+            var dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                emiter.ToColor = dialog.Color;
+                btnToColor.BackColor = dialog.Color;
+            }
+        }
     }
 }
