@@ -62,7 +62,7 @@ namespace Task4
 
         private void TbDirection_Scroll(object sender, EventArgs e)
         {
-            emiter.Life = tbDirection.Value;
+            emiter.Speed = tbDirection.Value;
         }
 
         private void TbSpead_Scroll(object sender, EventArgs e)

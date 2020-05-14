@@ -95,8 +95,8 @@ namespace Task4
 
         public override void ResetParticle(Particle particle)
         {
-            particle.Life =  20 + Particle.rand.Next(100);
-            particle.Speed = 1 + Particle.rand.Next(10);
+            particle.Life =  20 ;
+            particle.Speed =  Particle.rand.Next(10);
             particle.Direction = -90 + 15 - Particle.rand.Next(30);
             particle.Radius = 1 + Particle.rand.Next(5);
             particle.X = Position.X;
@@ -114,7 +114,7 @@ namespace Task4
     {
         public int Speed = 0;
         public int Spread = 20; 
-        public int Direction = -90 + 15 - Particle.rand.Next(30); 
+        public int Direction = -90 ; 
         public int Life = 20;
         public Color FromColor = Color.LightBlue; // исходный цвет
         public Color ToColor = Color.White; // конечный цвет
@@ -128,7 +128,7 @@ namespace Task4
 
 
             particle.Life = this.Life +  20 + Particle.rand.Next(100); ;
-            particle.Direction = this.Direction + Particle.rand.Next(-Spread / 3, Spread / 3);
+            particle.Direction = this.Direction + Particle.rand.Next(-Spread / 2, Spread / 2);
 
             particle.X = Position.X;
             particle.Y = Position.Y;
