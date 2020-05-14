@@ -35,6 +35,8 @@
             this.tbSpread = new System.Windows.Forms.TrackBar();
             this.btnFromColor = new System.Windows.Forms.Button();
             this.btnToColor = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpread)).BeginInit();
@@ -42,9 +44,9 @@
             // 
             // picDisplay
             // 
-            this.picDisplay.Location = new System.Drawing.Point(40, 33);
+            this.picDisplay.Location = new System.Drawing.Point(12, 12);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(253, 222);
+            this.picDisplay.Size = new System.Drawing.Size(253, 203);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             this.picDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PicDisplay_MouseMove);
@@ -57,7 +59,7 @@
             // 
             // tbDirection
             // 
-            this.tbDirection.Location = new System.Drawing.Point(474, 83);
+            this.tbDirection.Location = new System.Drawing.Point(285, 12);
             this.tbDirection.Maximum = 200;
             this.tbDirection.Name = "tbDirection";
             this.tbDirection.Size = new System.Drawing.Size(104, 45);
@@ -67,7 +69,7 @@
             // 
             // tbSpread
             // 
-            this.tbSpread.Location = new System.Drawing.Point(474, 170);
+            this.tbSpread.Location = new System.Drawing.Point(285, 63);
             this.tbSpread.Maximum = 180;
             this.tbSpread.Name = "tbSpread";
             this.tbSpread.Size = new System.Drawing.Size(104, 45);
@@ -77,9 +79,9 @@
             // 
             // btnFromColor
             // 
-            this.btnFromColor.Location = new System.Drawing.Point(364, 231);
+            this.btnFromColor.Location = new System.Drawing.Point(285, 126);
             this.btnFromColor.Name = "btnFromColor";
-            this.btnFromColor.Size = new System.Drawing.Size(75, 23);
+            this.btnFromColor.Size = new System.Drawing.Size(104, 23);
             this.btnFromColor.TabIndex = 3;
             this.btnFromColor.Text = "From color";
             this.btnFromColor.UseVisualStyleBackColor = true;
@@ -87,20 +89,43 @@
             // 
             // btnToColor
             // 
-            this.btnToColor.Location = new System.Drawing.Point(364, 271);
+            this.btnToColor.Location = new System.Drawing.Point(285, 155);
             this.btnToColor.Name = "btnToColor";
-            this.btnToColor.Size = new System.Drawing.Size(75, 23);
+            this.btnToColor.Size = new System.Drawing.Size(104, 23);
             this.btnToColor.TabIndex = 4;
             this.btnToColor.Text = "To color";
             this.btnToColor.UseVisualStyleBackColor = true;
             this.btnToColor.Click += new System.EventHandler(this.BtnToColor_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.label1.Location = new System.Drawing.Point(305, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "напор воды";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.label2.Location = new System.Drawing.Point(305, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "направление";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(402, 227);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnToColor);
             this.Controls.Add(this.btnFromColor);
             this.Controls.Add(this.tbSpread);
@@ -125,6 +150,8 @@
         private System.Windows.Forms.TrackBar tbSpread;
         private System.Windows.Forms.Button btnFromColor;
         private System.Windows.Forms.Button btnToColor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -73,9 +73,29 @@ namespace Task4.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap drop1 {
+            get {
+                object obj = ResourceManager.GetObject("drop1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap water {
             get {
                 object obj = ResourceManager.GetObject("water", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap water2 {
+            get {
+                object obj = ResourceManager.GetObject("water2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

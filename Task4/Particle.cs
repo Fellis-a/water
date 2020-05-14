@@ -79,7 +79,7 @@ namespace Task4
         public override Particle CreateParticle()
         {
             var particle = ParticleImage.Generate();
-            particle.image = Properties.Resources.drop;
+            particle.image = Properties.Resources.drop1;
             particle.FromColor = Color.LightBlue;
             particle.ToColor = Color.White;
 
@@ -122,7 +122,7 @@ namespace Task4
         public override Particle CreateParticle()
         {
             var particle = ParticleImage.Generate();
-             particle.image = Properties.Resources.drop;
+             particle.image = Properties.Resources.drop1;
             particle.FromColor = this.FromColor;
             particle.ToColor = Color.FromArgb(0, this.ToColor);
 
@@ -144,6 +144,8 @@ namespace Task4
                 particleColorful.Speed = 1 + 10;
 
                 particleColorful.Direction = this.Direction + Particle.rand.Next(-Spread / 2, Spread / 2);
+                particleColorful.FromColor = this.FromColor;
+                particleColorful.ToColor = Color.FromArgb(0, this.ToColor);
 
                 particleColorful.X = Position.X;
                 particleColorful.Y = Position.Y;

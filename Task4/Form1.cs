@@ -48,7 +48,7 @@ namespace Task4
             UpdateState();
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
-                g.DrawImage(Properties.Resources.water, picDisplay.Right,picDisplay.Top);
+                g.DrawImage(picDisplay.Image, 0, 0);
                 Render(g);
             }
             picDisplay.Invalidate();
@@ -62,7 +62,6 @@ namespace Task4
 
         private void TbDirection_Scroll(object sender, EventArgs e)
         {
-            emiter.Speed = tbDirection.Value;
             emiter.Life = tbDirection.Value;
         }
 
@@ -89,6 +88,11 @@ namespace Task4
                 emiter.ToColor = dialog.Color;
                 btnToColor.BackColor = dialog.Color;
             }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
