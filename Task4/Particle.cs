@@ -113,7 +113,7 @@ namespace Task4
     public class DirectionColorfulEmiter : PointEmiter
     {
         public int Speed = 0;
-        public int Spread = 20; 
+        public int Spread = 30; 
         public int Direction = -90 ; 
         public int Life = 20;
         public Color FromColor = Color.LightBlue; // исходный цвет
@@ -141,7 +141,7 @@ namespace Task4
             if (particleColorful != null)
             {
                 particleColorful.Life = this.Life+ 20 + Particle.rand.Next(100); ;
-                particleColorful.Speed = 1 + 10;
+                particleColorful.Speed =this.Speed+5;
 
                 particleColorful.Direction = this.Direction + Particle.rand.Next(-Spread / 2, Spread / 2);
                 particleColorful.FromColor = this.FromColor;
